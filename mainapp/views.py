@@ -21,7 +21,8 @@ async def create_statistic(statistic: StaticticAdd):
 
 @router.post("/statistic/get/")
 async def get_statistic_(range: Range):
-    statisctic_db = await get_statistic_analitic(range.get("start_date"), range.get("end_date"))
+    print(range)
+    statisctic_db = await get_statistic_analitic(range.start_date, range.end_date)
     return await to_representation(statisctic_db)
 
 

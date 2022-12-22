@@ -1,4 +1,5 @@
 from datetime import datetime
+from pydantic import ValidationError
 
 from mainapp.models import Statistic
 
@@ -19,13 +20,12 @@ async def average_cost_per_thousand_impressions(cost, clicks):
 
 
 async def get_statistic_analitic(start_date, end_date):
-    start_date = await get_date(start_date)
-    end_date = await get_date(end_date)
+    if start_date > end_date:
+        raise ValidationError({"Wrong data": "start date cannot be greater than end date"})
+    
     query = Statistic.select().where(start_date < Statistic.c.date, end_date > Statistic.c.date)
     return await database.fetch_all(query)
 
-async def get_date(date):
-    return datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
 
 async def to_representation(data: list):
     representation = []
