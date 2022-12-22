@@ -18,7 +18,7 @@
         }
      - Select POST method
      
-  2) Go to **http://localhost/api/token/** in Postman and set to body this
+  2) Go to **http://localhost/statistic/get/** in Postman and set to body this
      - {
           "start_date": "2022-12-31 00:00:00",
           "end_date": "2022-12-31 10:00:00",
