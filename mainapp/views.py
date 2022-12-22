@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from mainapp.models import Statistic
 
-from mainapp.schemas import Range, StaticticAdd, StatisticBase, StatisticCrm
+from mainapp.schemas import Range, StaticticAdd, StatisticBase
 
 from core.database import database
 
