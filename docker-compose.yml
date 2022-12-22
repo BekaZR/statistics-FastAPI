@@ -18,8 +18,6 @@ services:
     build:
       context: .
     volumes:
-      - ./static/:/static
-      - ./media/:/media
       - ./:/app
     entrypoint: ./wsgi-entrypoint.sh
     ports:
