@@ -5,9 +5,7 @@ from mainapp.schemas import Range, StaticticAdd, StatisticBase, StatisticCrm
 
 from core.database import database
 
-from datetime import datetime
-
-from mainapp.services import average_cost_per_click, to_representation
+from mainapp.services import get_statistic_analitic, to_representation
 
 
 router = APIRouter(tags=["statistic"])
@@ -23,11 +21,7 @@ async def create_statistic(statistic: StaticticAdd):
 
 @router.post("/statistic/get/")
 async def get_statistic_(range: Range):
-    start_date = datetime.strptime(range.get("start_date"), "%Y-%m-%d %H:%M:%S")
-    end_date = datetime.strptime(range.get("end_date"), "%Y-%m-%d %H:%M:%S")
-    query = Statistic.select().where(start_date < Statistic.c.date, end_date > Statistic.c.date)
-    statisctic_db = await database.fetch_all(query)
-    
+    statisctic_db = await get_statistic_analitic(range.get("start_date"), range.get("end_date"))
     return await to_representation(statisctic_db)
 
 

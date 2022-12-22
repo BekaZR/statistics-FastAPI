@@ -27,14 +27,6 @@ class StatisticBase(StaticticAdd):
         orm_mode = True
 
 
-class StatisticCrm(StatisticBase):
-    cpc: float
-    cpm: float
-    
-    class Config:
-        orm_mode = True
-
-
 class Range(BaseModel):
     start_date: datetime
     end_date: datetime
