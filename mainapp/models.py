@@ -11,7 +11,7 @@ Statistic = Table(
     "statistic",
     metadata,
     Column("id", Integer, primary_key=True,),
-    Column("date", DateTime(100), ),
+    Column("date", DateTime, ),
     Column("views", Integer, ),
     Column("clicks", Integer, ),
     Column("cost", Numeric(6, 2), ),
